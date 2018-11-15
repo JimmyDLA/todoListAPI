@@ -1,25 +1,24 @@
 'use strict';
-
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-
 var TaskSchema = new Schema({
-    name: {
-        type: String,
-        required: 'Kindly enter the name of the task'
+    name : { //first column
+        type : String,
+        required: [true, 'Your username cannot be blank.']
     },
-    Created_date: {
-        type: Date,
-        default: Date.now
+    Created_date : { //second column
+        type : Date,
+        default : Date.now
     },
-    status: {
-        type: [{
-            type: String,
-            enum: ['pending', 'ongoing', 'completed']
+    status : { //third column
+        type : [{
+            type : String,
+            enum : ['pending', 'ongoing', 'completed']
         }],
-        default: ['pending']
+        default : ['pending']
     }
 });
 
 module.exports = mongoose.model('Tasks', TaskSchema);
+
